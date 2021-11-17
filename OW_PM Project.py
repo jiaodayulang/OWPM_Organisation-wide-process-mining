@@ -21,9 +21,7 @@ all_filenames = [i for i in glob.glob(f"*.csv")]
 get_c=[]
 for file in all_filenames:
     df=pd.read_csv(file,nrows=10000, low_memory=False)
-    is_time_format = df.astype(str).apply(lambda x : x.str.match(r'\d{4}-\d{2}-\d{2} \d{2}\:\d{2}\:\d{2}').all())
-    #is_time_format = df.astype(str).apply(lambda x : x.str.match(r'\d{4}-\d{2}-\d{2}').all())
-    #df.loc[:,mask] = df.loc[:,mask].apply(pd.to_datetime,errors='coerce')
+    is_time_format = df.astype(str).apply(lambda x : x.str.match(r'\d{2,4}-\d{2}-\d{2,4} \d{2}\:\d{2}\:\d{2}').all())
     
     df.loc[:,is_time_format] = df.loc[:,is_time_format].apply(pd.to_datetime)
     is_time_columns = df.select_dtypes(include='datetime') # is_time_columns =[] or ['time']
@@ -40,7 +38,7 @@ time_cols=[]
 time_cols_dict={}
 
 for file in all_filenames:
-    df=pd.read_csv(file,nrows=50000, low_memory=False)
+    df=pd.read_csv(file, low_memory=False)
     #print(file)
     target_type = df.select_dtypes(include = ['object','datetime']) # target type
     temp_timecols=[]
@@ -61,10 +59,9 @@ for file in all_filenames:
             time_cols.append(column)
     #------------------------     Method 2 GET    
     is_time_format = df.astype(str).apply(lambda x : x.str.match(r'\d{2,4}-\d{2}-\d{2,4} \d{2}\:\d{2}\:\d{2}').all()) # mask
-    #is_time_format = df.astype(str).apply(lambda x : x.str.match(r'\d{4}-\d{2}-\d{2}').all())
     df.loc[:,is_time_format] = df.loc[:,is_time_format].apply(pd.to_datetime)
     is_time_columns = df.select_dtypes(include='datetime') # is_time_columns =[] or ['time']
-    # remove DOB
+    # remove DOB if exsit
     temp_cols=list(is_time_columns.columns)
     for i in temp_cols:
         if i=='DOB':
@@ -86,12 +83,9 @@ print(non_event_table)
 print()
 print('Time columns dictionary:',time_cols_dict)
 
-
-
 # >>> timestamp columns in event data tables
 timestamp_list=list(set(time_cols))
 print('Timestamp list:',timestamp_list)        # ------------------------------------->>> get time column list (unique element)
-
 
 # ------------------------------  Case ID Identification -------------------------
 # Primary Keys in non-event data tables
@@ -123,7 +117,6 @@ caseID=[]
 for file in event_table: # ----------------->  Strategy I3: in a table containing time column
     df=pd.read_csv(file,nrows=10000, low_memory=False)
     #----------------------------------------------------------------------------> Strategy: I1
-#    ob_int_type = df.select_dtypes(include = ['object','integer'])  
     ob_int_type = df.select_dtypes(include = ['integer'])  #-------> Strategy: I1
 
     # ---------------------------------------------------------------------------> Strategy: I2
@@ -185,7 +178,7 @@ indices=[] # trend line of 6 cvs
 
 g_count=0 # count the total amount of generic processes
 for file in event_table: 
-    df=pd.read_csv(file,nrows=50000, low_memory=False)  # dataframe from an event table
+    df=pd.read_csv(file, low_memory=False)  # dataframe from an event table
     timestamp_list=time_cols_dict[file] # get time columns in one file/table
 
     file_caseID_dict[file] # get case IDs in the table
@@ -219,29 +212,25 @@ for file in event_table:
         duration=duration0.astype('timedelta64[s]') # transfer to floate
         caseID_group['duration']=duration.to_list()
         caseID_group[caseID_group['duration'].astype(bool)]  # --->>> remove empty rows
-        #caseID_group=caseID_group[caseID_group.duration != 0]
         #print('The duration mean:',duration.mean())
         # --------------- Get Year for each case
         caseID_group['max']=pd.to_datetime(caseID_group['max'],format='%Y-%m-%d')
         caseID_group['Year']=pd.DatetimeIndex(caseID_group['max']).year # if aggregate yearly data
         caseID_group['Month_Year']=pd.to_datetime(caseID_group['max']).dt.to_period('M') # if aggregate monthly data
-        #caseID_group['Period']=caseID_group['Month_Year']
-        caseID_group['Period']=caseID_group['Year']
-        caseIDset[g_processName]=caseID_group # ------------------------------------------------------>>>> GET new dataframe |caseID|Duration|year|
-        
-        
-        
-        #print(caseID_group['Year'])
+        #caseID_group['Period']=caseID_group['Month_Year'] # switch for evaluating processes by monthly data
+        caseID_group['Period']=caseID_group['Year']     # switch for evaluating processes by yearly data
+        caseIDset[g_processName]=caseID_group # ------------------------------------------------------>>>> GET new dataframe |caseID|Duration|year
+
         # ----------------Get CVs for recent 6 years or months --------
-        #max_value = caseID_group['Year'].max() # if real time, it should be current week/month/year
+        #max_value = caseID_group['Period'].max() # if real time, it should be current week/month/year
         sort_period=caseID_group['Period'].sort_values(ascending=False)
         unique_p=sort_period.unique()
         #print(unique_p)
 
         print('length of the period (years):',len(unique_p))
         print('Number of rows in dataframe: ',len(caseID_group.index))
-        if len(unique_p)>=10: # sample size > 30 
-            unique_p=[2200,2199,2198,2197,2196,2195] # testing - override
+        if len(unique_p)>=30: # sample size > 30 
+            # unique_p=[2200,2199,2198,2197,2196,2195] # testing - override
             p1=unique_p[0] # period 1
             p2=unique_p[1]
             p3=unique_p[2]
@@ -283,7 +272,7 @@ for file in event_table:
                 slope = float("{:.3f}".format(Sxy/Sxx)) # --------->>> GET process performance index for one process based on recent 6-year period
                 #b0 = y_mean-slope*x_mean
             else:
-                slope=-900 # one of divisor = 0 and case number <3
+                slope=-900 # one of divisor = 0 and number of cases <3
         else:
             #slope = 'not calculated due to inadequate data'
             slope=-999 # sample size is less than 30
@@ -309,10 +298,10 @@ identifier_list=[]
 spec_idfier_dict={}
 
 for file in event_table:
-    df=pd.read_csv(file,nrows=100000, low_memory=False)
+    df=pd.read_csv(file, low_memory=False)
     object_columns=df.select_dtypes(include='object') # -----------------------------------   select identifier   
     identifiers=[] # only a list of identifiers for one file
-    element = [element for element in object_columns if 'UOM' in element]  # a list of UOM columns
+    element = [element for element in object_columns if 'UOM' in element]  # a list of UOM columns or measurement units
     for i in object_columns:
         if i not in event_data + element:   # ------------------------------------------------------>>> strategy
             identifiers.append(i)
@@ -330,7 +319,7 @@ print()
 identifier_sets={}
 num_value_element=0
 for file in event_table:
-    df=pd.read_csv(file,nrows=10000)
+    df=pd.read_csv(file)
     x=[]
     identi_value_dict={}
     for col in spec_idfier_dict[file]:
@@ -360,7 +349,7 @@ s_indices=[] # trend line of 6 cvs
 s_count=0 # count the total amount of specialised processes
 
 for file in event_table:
-    df=pd.read_csv(file,nrows=50000, low_memory=False)
+    df=pd.read_csv(file, low_memory=False)
     
     caseIDnames=file_caseID_dict[file]
     for caseID in caseIDnames:
@@ -389,7 +378,7 @@ for file in event_table:
                 unique_p=sort_period.unique()
         
                 if len(unique_p)>=30: # sample size >=30, according to Central Limit Theorem
-                    unique_p=[2200,2199,2198,2197,2196,2195] # testing - override
+                    #unique_p=[2200,2199,2198,2197,2196,2195] # testing - override
                     p1=unique_p[0] # period 1
                     p2=unique_p[1]
                     p3=unique_p[2]
@@ -428,14 +417,14 @@ for file in event_table:
                         Sxx = np.sum(x*x)-n*x_mean*x_mean
 
                         slope = float("{:.3f}".format(Sxy/Sxx)) # process performance index for one process based on recent 6-year period
-                        b0 = y_mean-slope*x_mean
+                        #b0 = y_mean-slope*x_mean
                     else:
                         slope=-900
                     #print('Slope for this process in recent 6 years: ', slope)
                 else:
                     #slope = 'not calculated due to inadequate data'
                     slope=-999 # sample size <30
-                    b0 = 'not calculated due to inadequate data'
+                    #b0 = 'not calculated due to inadequate data'
 
                 s_indices.append(slope)
 
@@ -460,4 +449,4 @@ totalProcessNum=len(genericProcess)+len(s_ProcessName)
 
 print(len(genericProcess)+len(s_ProcessName),' processes are detected.')
 x=total.sort_values(by=['processIndex'],ascending=False)
-print(x.head(60))
+print(x.head(100))
