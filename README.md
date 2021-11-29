@@ -17,7 +17,7 @@ The complexity of organisational processes is a key challenge for any organisati
 #### Method 1: Coefficient of Simple Linear Regression
 A time series regression with a time trend as the independent variable
 
-[image](https://user-images.githubusercontent.com/37859948/143956229-44a12f7b-04c2-4201-b342-0947f6fd57b3.png)
+𝑊_𝑡=𝛽_0+𝛽_1 𝑡+𝜀_𝑡![image](https://user-images.githubusercontent.com/37859948/143956829-035185fe-d94b-43b5-9e28-f76230032841.png)
 
 
 Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observed data 𝑊_1,𝑊_2, … 𝑊_𝑛, and a serial of 𝜀_𝑡′𝑠 are random errors are not observed
