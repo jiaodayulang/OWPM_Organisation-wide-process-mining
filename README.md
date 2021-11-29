@@ -23,7 +23,7 @@ Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observ
 
 The slope of the trend line: 
 
-<p align="center"><img src="https://user-images.githubusercontent.com/37859948/143957506-f4b5a6e2-81e4-4c10-945d-54a5e5f429a8.png" width="150"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/37859948/143957506-f4b5a6e2-81e4-4c10-945d-54a5e5f429a8.png" width="250"></p>
 
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/disctributionChanges.png" width="400"></p>
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PerformanceIndexCal.png" width="500"></p>
