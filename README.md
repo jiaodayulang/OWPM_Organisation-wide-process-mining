@@ -8,7 +8,7 @@ The complexity of organisational processes is a key challenge for any organisati
 
 ## Method for automated process identification
 ### Step 1: Process enumeration
-<p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/Conceptual Case ID Identification matching example.png" width="400"></p>
+<p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/Conceptual Case ID Identification matching example.png" width="500"></p>
 
 #### Prototype development
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PrototypeDev.png" width="400"></p>
