@@ -7,14 +7,17 @@ The complexity of organisational processes is a key challenge for any organisati
 <p align="center"><em>Figure: Conceptual Framework for Process Identification</em></p>
 
 ## Method for automated process identification
-### Step 1: Process enumeration
+### Stage 1: Process enumeration
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/Conceptual Case ID Identification matching example.png" width="500"></p>
 
 #### Prototype development
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PrototypeDev.png" width="400"></p>
 
-### Step2: Process performance evaluation
+### Stage 2: Process performance evaluation
+#### Method 1: Coefficient of Simple Linear Regression![image](https://user-images.githubusercontent.com/37859948/143955890-4db5bdea-9fbf-42bb-b1f5-605ac115c102.png)
+
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/disctributionChanges.png" width="400"></p>
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PerformanceIndexCal.png" width="500"></p>
 
+#### Method 2: Control chart
 
