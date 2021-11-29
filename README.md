@@ -24,7 +24,7 @@ Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observ
 
 The slope of the trend line: 
 
-\[\beta_1=\frac{n \sum_{t=1}^{n} tW_t- \sum_{t=1}^{n}t \sum_{t=1}^{n}W_t}{n\sum_{t=1}^{n}t^2-(\sum_{t=1}^{n}t)^2},\]  
+\beta_1=\frac{n \sum_{t=1}^{n} tW_t- \sum_{t=1}^{n}t \sum_{t=1}^{n}W_t}{n\sum_{t=1}^{n}t^2-(\sum_{t=1}^{n}t)^2}  
 
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/disctributionChanges.png" width="400"></p>
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PerformanceIndexCal.png" width="500"></p>
