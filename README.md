@@ -14,14 +14,18 @@ The complexity of organisational processes is a key challenge for any organisati
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PrototypeDev.png" width="400"></p>
 
 ### Stage 2: Process performance evaluation
-#### Method 1: Coefficient of Simple Linear Regression!
+#### Method 1: Coefficient of Simple Linear Regression
 A time series regression with a time trend as the independent variable
-𝑊_𝑡=𝛽_0+𝛽_1 𝑡+𝜀_𝑡
-Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observed data 𝑊_1,𝑊_2, 〖… 𝑊〗_𝑛, and a serial of 𝜀_𝑡′𝑠 are random errors are not observed
+
+[image](https://user-images.githubusercontent.com/37859948/143956229-44a12f7b-04c2-4201-b342-0947f6fd57b3.png)
+
+
+Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observed data 𝑊_1,𝑊_2, … 𝑊_𝑛, and a serial of 𝜀_𝑡′𝑠 are random errors are not observed
 
 The slope of the trend line: 
 
-𝛽_1=  (𝑛∑_(𝑡=1)^𝑛▒〖𝑡𝑊_𝑡 〗  −∑_(𝑡=1)^𝑛▒〖𝑡 ∑_(𝑡=1)^𝑛▒𝑊_𝑡 〗)/(𝑛∑_(𝑡=1)^𝑛▒𝑡^2  〖−(∑_(𝑡=1)^𝑛▒𝑡)〗^2 )  
+[image](https://user-images.githubusercontent.com/37859948/143956265-6218c441-e8f9-4f7a-92bb-fbfd0d417b0a.png)
+ 
 
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/disctributionChanges.png" width="400"></p>
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PerformanceIndexCal.png" width="500"></p>
