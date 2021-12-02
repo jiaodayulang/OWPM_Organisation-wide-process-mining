@@ -32,3 +32,6 @@ The slope of the trend line:
 <p align="center"><img src="https://user-images.githubusercontent.com/37859948/144357956-d7e07c32-ea93-4d37-a6da-d119f5cecb83.png" width="400"></p>
 
 ### Output
+![SnippetProcessEvaluation1](https://user-images.githubusercontent.com/37859948/144362421-404370a8-0028-4876-ab6f-80a1f7cf1289.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/37859948/144362421-404370a8-0028-4876-ab6f-80a1f7cf1289.png" width="400"></p>
+
