@@ -29,4 +29,5 @@ The slope of the trend line:
 <p align="center"><img src="https://github.com/jiaodayulang/OWPM_Orgnisation-wide-process-mining/blob/main/Image Folder/PerformanceIndexCal.png" width="500"></p>
 
 #### Method 2: Control chart
+<p align="center"><img src="https://user-images.githubusercontent.com/37859948/144357956-d7e07c32-ea93-4d37-a6da-d119f5cecb83.png" width="400"></p>
 
