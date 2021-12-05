@@ -3,9 +3,12 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/37859948/144745872-06b7cfbb-abcf-4b48-ae38-df055496a0fe.png" width="500"></p>
 <p align="center">
   Here is an example of the processes in a hopital.<br>
+  <br>
 When an organisation has a large scale of processes, how to quickly identify:<br>
-  Which processes are having problems?<br>
-  Which process performs worse than others?
+  <br>
+  \textbf{Which processes are having problems?}<br>
+  <br>
+  **Which process performs worse than others?**
 </p>
 
 ## Introduction
