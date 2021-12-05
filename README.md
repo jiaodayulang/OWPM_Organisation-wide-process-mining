@@ -19,7 +19,7 @@ A time series regression with a time trend as the independent variable
 
 <p align="center"><img src="https://user-images.githubusercontent.com/37859948/143956829-035185fe-d94b-43b5-9e28-f76230032841.png" width="150"></p>
 
-Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observed data 𝑊_1,𝑊_2, … 𝑊_𝑛, and a serial of 𝜀_𝑡′𝑠 are random errors are not observed
+Where 𝛽_0 and 𝛽_1 (the intercept and slope, respectively) using the observed data 𝑊<sub>1</sub>,𝑊_2, … 𝑊_𝑛, and a serial of 𝜀_𝑡′𝑠 are random errors are not observed
 
 The slope of the trend line: 
 
