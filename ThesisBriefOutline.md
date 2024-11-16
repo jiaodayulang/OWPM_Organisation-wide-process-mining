@@ -1,4 +1,5 @@
 # OWPM_Organisation-wide-process-mining
+(Brief Outline for my thesis)
 
 <p align="center"><img src="https://user-images.githubusercontent.com/37859948/144745872-06b7cfbb-abcf-4b48-ae38-df055496a0fe.png" width="500"></p>
 <p align="center">
